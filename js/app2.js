@@ -102,3 +102,92 @@ const dailyTotal = people.reduce((total, person) => {
 }, 0)
 
 console.log(dailyTotal)
+
+/**************************************JavaScript Nuggets array reduce : object example****************************************************/
+ const cart = [
+    {
+        title: 'Samsung Galaxy S7',
+        price: 599.99,
+        amount: 1,
+    },
+    {
+        title: 'google pixel',
+        price: 499.99,
+        amount: 3,
+    },
+    {
+        title: 'Samsung Galaxy S7',
+        price: 599.99,
+        amount: 1,
+    },
+    {
+        title: 'Xiaomi Redme Note 2',
+        price: 699.99,
+        amount: 5,
+    },
+    {
+        title: 'Xiaomi Redme Note 5',
+        price: 399.99,
+        amount: 3,
+    },
+    {
+        title: 'Samsung J7 Pro',
+        price: 299.99,
+        amount: 6,
+    },
+    {
+        title: 'Vivo S20',
+        price: 299.99,
+        amount: 6,
+    },
+    {
+        title: 'Walton X80',
+        price: 199.99,
+        amount: 8,
+    }
+ ]
+
+ let {totalItems, cartTotal} = cart.reduce((total, cartItem)=>{
+   const {amount, price} = cartItem;
+   //count items
+   total.totalItems += amount;
+   //count sum
+   total.cartTotal += amount * price;
+
+    return total;
+ }, {
+    totalItems: 0,
+    cartTotal: 0,
+ })
+ console.log('totalItems: '+ totalItems +', cartTotal :'+ cartTotal)
+  const total = parseInt(cartTotal.toFixed())
+ console.log('totalItems: '+ totalItems +', cartTotal :'+ total)
+
+ console.log(total)
+
+ const url = 'https://api.github.com/users/john-smilga/repos?per_page=100'
+
+ const fetchRepos = async () => {
+   const res = await fetch(url)
+    const data = await res.json()
+    console.log(data)
+    const newData = data.reduce((total, repo) => {
+        const {language} = repo
+       /*  if(language){
+            if(total[language]){
+                total[language] = total[language] + 1
+            } else {
+                total[language] = 1
+            }
+        } */
+        if(language){
+            total[language] = total[language] + 1 || 1
+        }
+
+        return total
+    }, {
+        
+    })
+    console.log(newData)
+ }
+ fetchRepos()
