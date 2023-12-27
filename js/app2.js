@@ -92,3 +92,13 @@ console.log(peter)
 
 const fruit = fruits.find(f => f==='guava')
 console.log(fruit)
+
+/******************************Array Reducer****************************************/
+const dailyTotal = people.reduce((total, person) => {
+    console.log(total)
+    console.log(person.name+': '+ person.salary)
+    total += person.salary;
+    return total
+}, 0)
+
+console.log(dailyTotal)
