@@ -523,10 +523,32 @@ fetchBtn.addEventListener('click', () => {
   })
 
 
-/****************************************Widthk/Height*****************************************************/
+/****************************************Width/Height*****************************************************/
 
   log(
-    "/****************************************Fetch Api*****************************************************/"
+    "/****************************************Width/Heigh*****************************************************/"
   );
+/**
+ * Width/Height - window , any element
+ * innerHeight -window
+ * innerWidth -window
+ * getBoundingClientRect() - any element
+ */
+let w = window.innerWidth;
+let h = window.innerHeight;
+log(`width : ${w}, and height: ${h}`)
 
+const hover = document.querySelector('.hover');
+hover.addEventListener('click', () => {
+  log('height: '+ window.innerHeight)
+  log('width: '+window.innerWidth)
+  
+})
+
+const dimensionBtn = document.querySelector('.dimension');
+const box = document.querySelector('.box');
+dimensionBtn.addEventListener('click', () => {
+  const dimension = box.getBoundingClientRect();
+  log(dimension)
+})
 
