@@ -463,10 +463,11 @@ async function getData(val) {
     //const uid = await dat.id;
     const art = await getArticles(dat.id);
     log(art);
-  } catch (err) { log(err)}
-
+  } catch (err) {
+    log(err);
   }
-getData('Azizul Karim');
+}
+getData("Azizul Karim");
 /* getArticles(8)
   .then((d) => log(d))
   .catch((err) => log(err)); */
@@ -483,3 +484,49 @@ const example = async () => {
 someFunc() */
 /* log('someFunc :'+someFunc())
 log('AsyNC: '+ example()) */
+
+/****************************************Fetch Api*****************************************************/
+log(
+  "/****************************************Fetch Api*****************************************************/"
+);
+
+const data_url = "https://dummyjson.com/products";
+/* fetch(data_url)
+  .then(resp => resp.json())
+  .then(data => log(data))
+  .catch(err => log(err)) */
+ let products;
+  const getProducts = async () =>{
+    try {
+      const resp = await fetch(url);
+      if(!resp.ok) throw new Error('Product not found.')
+     return resp.json();
+  } catch (err) {
+    log(err)
+  }
+}
+/*  getProducts().then(data => {
+  products = data
+  log(products)
+}) */
+
+
+
+const fetchBtn = document.querySelector('.fetch');
+fetchBtn.addEventListener('click', () => {
+  getProducts().then(data=> {
+    const product = document.querySelector('.product');
+    log(data[0].name)
+    const items = data.map(p => `<li>${p.name}</li>`).join('<hr>')
+    product.innerHTML = items
+    })
+  })
+
+
+/****************************************Widthk/Height*****************************************************/
+
+  log(
+    "/****************************************Fetch Api*****************************************************/"
+  );
+
+
