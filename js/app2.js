@@ -1,3 +1,5 @@
+
+
 const person = {
   name: "john",
 };
@@ -329,5 +331,35 @@ btn.addEventListener('click', e => {
 }
   )
 //array methods, setTimeout, event listeners etc.
+
+/***************************callback hell******************************************************************/
+
+/* 1.after 1s first red
+2. after 3s second blue 4s
+3.after 2s third green 6s
+in sequence */
+
+const first1 = document.querySelector('.first');
+const second1 = document.querySelector('.second');
+const third = document.querySelector('.third');
+
+const btnHell = document.querySelector('.btn-hell');
+
+btnHell.addEventListener('click', () => {
+  setTimeout(() => {
+    first1.style.color = 'red';
+        setTimeout(() => {
+          second1.style.color = 'blue';
+              setTimeout(() => {
+                third.style.color = 'green';
+              }, 2000)
+        }, 3000)
+  }, 5000)
+ 
+});
+
+/******************************************Promise**********************************************************/
+
+
 
 
