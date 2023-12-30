@@ -414,3 +414,72 @@ const data = [
   "Shahidul Islam",
   "Kazi Anwar",
 ];
+
+/***************************************** Async / await ***********************************************************/
+/*
+  async must be present, always return a promise
+  await waits till promise is settled
+  error handling - try/catch block
+*/
+const users = [
+  { id: 1, name: "Masud Rana" },
+  { id: 2, name: "Shah Md Abdul Mabud" },
+  { id: 3, name: "Azizul Karim" },
+  { id: 4, name: "Shahidul Islam" },
+  { id: 5, name: "Golam Kibria" },
+];
+const articles = [
+  { userId: 1, articles: ["one", "two", "three"] },
+  { userId: 2, articles: ["four", "five"] },
+  { userId: 3, articles: ["six", "seven", "eight", "nine"] },
+  { userId: 4, articles: ["ten", "eleven"] },
+  { userId: 5, articles: ["twelve", "thirteen", "fourteen"] },
+];
+
+function getUser(name) {
+  return new Promise((resolve, reject) => {
+    const user = users.find((user) => user.name === name);
+    user ? resolve(user) : reject("user with such name not found.");
+  });
+}
+function getArticles(userId) {
+  return new Promise((resolve, reject) => {
+    const userArticles = articles.find((user) => user.userId === userId);
+    userArticles ? resolve(userArticles.articles) : reject("Wrong user ");
+  });
+}
+/* getUser("Golam Kibria")
+  .then((user) => {
+    log('user id: '+user.id)
+    const articles = getArticles(user.id);
+    log(articles)
+    return articles;
+  })
+  .then((articles) => log('article: '+articles))
+  .catch((err) => log(err)); */
+async function getData(val) {
+  try {
+    const dat = await getUser(val);
+    //const uid = await dat.id;
+    const art = await getArticles(dat.id);
+    log(art);
+  } catch (err) { log(err)}
+
+  }
+getData('Azizul Karim');
+/* getArticles(8)
+  .then((d) => log(d))
+  .catch((err) => log(err)); */
+
+/*
+const example = async () => {
+  return "Hello world from async function";
+};
+ async function someFunc(){
+  const result = await example();
+  log(result)
+  log('hello there in async')
+}
+someFunc() */
+/* log('someFunc :'+someFunc())
+log('AsyNC: '+ example()) */
