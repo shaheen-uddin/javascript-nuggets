@@ -1,5 +1,3 @@
-
-
 const person = {
   name: "john",
 };
@@ -290,30 +288,29 @@ const user = {
 
 /*********/
 
-
 /** *******************/
-({displayName} = user);
-log(displayName)
-function userId ({displayName:dname}){
+({ displayName } = user);
+log(displayName);
+function userId({ displayName: dname }) {
   return dname;
 }
-function whois({displayName, fullName: {firstName: name}}){
-  return `${displayName} is ${name}`
+function whois({ displayName, fullName: { firstName: name } }) {
+  return `${displayName} is ${name}`;
 }
 
-log(userId(user))
-log(whois(user))
+log(userId(user));
+log(whois(user));
 
 /***********************************Callback Function******************************************************/
 
-function makeUpperCase (value){
+function makeUpperCase(value) {
   log(value.toUpperCase());
 }
-function reverseString(value){
-  log(value.split('').reverse().join(''))
+function reverseString(value) {
+  log(value.split("").reverse().join(""));
 }
 
-function handleName(name, cb){
+function handleName(name, cb) {
   const fullName = `${name} smith`;
   cb(fullName);
 }
@@ -323,13 +320,14 @@ handleName('Zulfiqar', makeUpperCase)
 handleName('nasim', reverseString);
 reverseString('tasnim zara'); */
 
-handleName('Tasnim Sara', value =>log(value.toUpperCase()))
-const btn = document.querySelector('#btn')
-function callBack(e){e.target}
-btn.addEventListener('click', e => {
-  callBack(e)
+handleName("Tasnim Sara", (value) => log(value.toUpperCase()));
+const btn = document.querySelector("#btn");
+function callBack(e) {
+  e.target;
 }
-  )
+btn.addEventListener("click", (e) => {
+  callBack(e);
+});
 //array methods, setTimeout, event listeners etc.
 
 /***************************callback hell******************************************************************/
@@ -339,27 +337,80 @@ btn.addEventListener('click', e => {
 3.after 2s third green 6s
 in sequence */
 
-const first1 = document.querySelector('.first');
-const second1 = document.querySelector('.second');
-const third = document.querySelector('.third');
+const first1 = document.querySelector(".first");
+const second1 = document.querySelector(".second");
+const third = document.querySelector(".third");
 
-const btnHell = document.querySelector('.btn-hell');
+const btnHell = document.querySelector(".btn-hell");
 
-btnHell.addEventListener('click', () => {
+btnHell.addEventListener("click", () => {
   setTimeout(() => {
-    first1.style.color = 'red';
-        setTimeout(() => {
-          second1.style.color = 'blue';
-              setTimeout(() => {
-                third.style.color = 'green';
-              }, 2000)
-        }, 3000)
-  }, 5000)
- 
+    first1.style.color = "red";
+    setTimeout(() => {
+      second1.style.color = "blue";
+      setTimeout(() => {
+        third.style.color = "green";
+      }, 2000);
+    }, 3000);
+  }, 5000);
 });
 
 /******************************************Promise**********************************************************/
+// Promise: Pending, Rejected, Fulfilled
 
+const value = 2;
+//log('Random Number: '+ Math.floor(Math.random() * 3))
 
+const promise = new Promise((resolve, reject) => {
+  const random = Math.floor(Math.random() * 3);
+  random === value
+    ? resolve(["Rahim", "Karim", "Hasan", "Moyez"])
+    : reject("data not matched.");
+});
 
+log(promise);
 
+promise.then((data) => log(data)).catch((err) => log(err));
+
+/****************************************** Promise in Details (promise chaining) **********************************************************/
+/* const first2 = document.querySelector('.first2');
+const second2 = document.querySelector('.second2');
+const third2 = document.querySelector('.third2') */
+
+const btnPromise = document.querySelector(".promise");
+
+btnPromise.addEventListener("click", () => {
+  // alert('working')
+  addColor(".first2", "red", 1000, data)
+    .then((d) => {
+      log(d);
+      addColor(".second2", "blue", 3000);
+      return d.splice(2, 2);
+    })
+    .then((d) => {
+      log("last: " + d);
+      addColor(".third2", "green", 200);
+      log(d.splice(0, 2));
+    })
+    .catch((err) => log(err));
+});
+
+function addColor(selector, color, time, d) {
+  const element = document.querySelector(selector);
+  return new Promise((resolve, reject) => {
+    element
+      ? setTimeout(() => {
+          element.style.color = color;
+          resolve(d);
+        }, time)
+      : reject("There is no such element :" + element);
+  });
+}
+
+const data = [
+  "Masud Rana",
+  "Shah Abdul Mabud",
+  "Aziz Karim",
+  "Shahidul Islam",
+  "Kazi Anwar",
+];
