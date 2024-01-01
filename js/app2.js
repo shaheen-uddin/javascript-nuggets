@@ -584,13 +584,103 @@ log(p)
 
 /********************************************Get Element Helper*****************************************************************/
 const heading = document.querySelector('.heading');
-const listItems = document.querySelectorAll('.list-item');
+//const listItems = document.querySelectorAll('.list-item');
 
-const getElement() = selector => {
+const getElement = selector => {
   const el = document.querySelector(selector);
   if(el) return el;
   throw new Error('Please double check the selector :' +selector)
 }
+
+
+ /********************************************Object.keys() & Object.values, & Object.entries()*****************************************************************/
+const person1 = {
+  name: 'john',
+  age: 24,
+  status: 'student' 
+};
+
+const values = Object.entries(person1)
+log(values)
+
+//map
+const newResult = values.map(item => {
+  log(item)
+  let [first, second] = item;
+  log(first + second)
+ // log(second)
+ return first;
+})
+
+log(newResult)
+
+//for of
+for(const item of values) {
+  const[first,second] = item;
+  log(`${first} ${second}`)
+  //return first;
+}
+
+log(first)
+ /********************************************new Set*****************************************************************/
+
+ //set object - store a collection of unique values of any type
+
+ /*new Set()
+ add(value)
+ //delete(value)
+ //clear()
+ //has(value)
+
+ //iterators
+ //entries(), keys(), values(), forEach()
+*/
+ const unique = new Set();
+
+ log(unique)
+
+ unique.add('first')
+ unique.add('second')
+ unique.add('third')
+ unique.add('fourth')
+ unique.add(Math.floor(Math.random() * 4))
+ unique.add('first')
+ unique.add(4)
+
+
+const result = unique.delete('fourth')
+log(result)
+
+const isVal = unique.has(4)
+log(isVal)
+
+log(Object.entries(unique))
+ log(unique)
+
+ const productS = [
+  {
+    title: 'high-back bench',
+    company:  'ikea'
+  },
+  {
+    title: 'albany table',
+    company:  'marcos'
+  },
+  {
+    title: 'accent chair',
+    company:  'caressa'
+  },
+  {
+    title: 'wooden table',
+    company:  'ikea'
+  },
+
+ ];
+
+ const companies = productS.map(p => p.company)
+ log(Object.entries(companies))
+ const uniqueCompanies = [...new Set(companies)];
+ log(Object.values(uniqueCompanies))
 
 
  
