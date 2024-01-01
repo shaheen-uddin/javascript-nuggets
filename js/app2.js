@@ -552,3 +552,45 @@ dimensionBtn.addEventListener('click', () => {
   log(dimension)
 })
 
+/*************************************Timestamp*********************************************************************/
+// Timestamp
+log('timestamp: '+new Date());
+log('Now :'+Date.now());
+log('getTime: '+new Date().getTime())
+log(new Date().valueOf())
+
+setInterval(() => {
+  const timer = document.querySelector('.timer');
+  timer.textContent = "Time: "+ new Date(Date.now())
+}, 1000)
+
+let citizen = []
+citizen = [...citizen, {id: Date.now(), name: 'john'}]
+log(citizen)
+
+const now = Date.now()
+const futurDate = new Date(now + 1000*60)
+log(now)
+log('TIME: '+futurDate)
+
+
+/********************************************ES2022*****************************************************************/
+const p = people.map((p) => {
+  return `<h2>${p.name}</h2>`
+})
+const name = document.querySelector('.name');
+name.innerHTML = p.join('<hr>')
+log(p)
+
+/********************************************Get Element Helper*****************************************************************/
+const heading = document.querySelector('.heading');
+const listItems = document.querySelectorAll('.list-item');
+
+const getElement() = selector => {
+  const el = document.querySelector(selector);
+  if(el) return el;
+  throw new Error('Please double check the selector :' +selector)
+}
+
+
+ 
