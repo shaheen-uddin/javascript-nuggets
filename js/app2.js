@@ -682,5 +682,33 @@ log(Object.entries(unique))
  const uniqueCompanies = [...new Set(companies)];
  log(Object.values(uniqueCompanies))
 
+  /********************************************String includes()*****************************************************************/
 
- 
+//String includes() -checks if a string contains another string.
+
+const product_s = [
+{title: 'Leather Chair'},
+{'title': 'Modern Poster'},
+{'title': 'Bar Stool'},
+{'title': 'Arm Chair'},
+{'title': 'Roking Chair'}
+
+];
+
+//const firstName = 'shaheen';
+//let res = firstName.includes('sh',1);
+//let res = product_s.title.includes('t',3);
+
+const text = 'ro';
+let res = product_s.filter(pro => pro.title.toLocaleLowerCase().includes(text))
+log(res)
+
+  /********************************************Array includes()*****************************************************************/
+//array includes() - checks if the item is in array
+//useful in conditional statements
+
+const groceries = ['milk', 'bread', 'meat'];
+
+let randomItem = 'bread';
+const isIncluded = groceries.includes(randomItem, 0);
+log(isIncluded)
